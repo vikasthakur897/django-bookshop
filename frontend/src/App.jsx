@@ -1,35 +1,30 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import BookList from './components/BookList';
+import BookForm from './components/BookForm';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const handleNew = () => {
+    window.location.reload();
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+      <header className="bg-white/80 backdrop-blur shadow-sm sticky top-0 z-10 border-b border-gray-200">
+        <div className="max-w-6xl mx-auto py-4 px-6 flex items-center justify-between">
+          <h1 className="text-3xl font-extrabold text-blue-600 tracking-tight">📚 BookShop</h1>
+          <p className="text-sm text-gray-500">Manage your bookstore with ease</p>
+        </div>
+      </header>
+
+      <main className="py-10">
+        <div className="max-w-6xl mx-auto px-6 space-y-10">
+          <BookForm onSuccess={handleNew} />
+          <BookList />
+        </div>
+      </main>
+    </div>
+  );
 }
 
-export default App
+export default App;
